@@ -1,0 +1,14 @@
+load("@rules_proto_grpc//:defs.bzl", "proto_plugin")
+
+proto_plugin(
+    name = "proto_plugin",
+    exclusions = [
+        "google/protobuf",
+    ],
+    outputs = [
+        "{protopath}.pb.zig",
+    ],
+    protoc_plugin_name = "zig",
+    tool = "@zig_protobuf//bootstrapped-generator",
+    visibility = ["//visibility:public"],
+)

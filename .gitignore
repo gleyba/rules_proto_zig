@@ -1,0 +1,6 @@
+bazel-*
+.bazeliskrc
+.bazelrc.user
+.idea/
+.ijwb/
+MODULE.bazel.lock

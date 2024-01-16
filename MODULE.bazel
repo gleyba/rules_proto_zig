@@ -1,0 +1,16 @@
+bazel_dep(name = "rules_zig", version = "0.2.0")
+bazel_dep(name = "protobuf", version = "21.7")
+bazel_dep(name = "rules_proto", version = "5.3.0-21.7")
+bazel_dep(name = "rules_proto_grpc", version = "5.0.0-alpha2")
+
+bazel_dep(
+    name = "buildifier_prebuilt",
+    version = "6.4.0",
+    dev_dependency = True,
+)
+
+zig_proto = use_extension(
+    "//src/bzl/repo:extensions.bzl",
+    "zig_proto",
+)
+use_repo(zig_proto, "zig_protobuf")

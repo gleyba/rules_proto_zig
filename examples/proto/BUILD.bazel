@@ -1,0 +1,46 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("//:defs.bzl", "zig_proto_library")
+
+proto_library(
+    name = "person_proto",
+    srcs = ["person.proto"],
+    # import_prefix = "examples/proto",
+    visibility = ["//examples:__subpackages__"],
+    deps = [":place_proto"],
+)
+
+zig_proto_library(
+    name = "person_zig_proto",
+    protos = [":person_proto"],
+    visibility = ["//examples:__subpackages__"],
+    deps = [":place_zig_proto"],
+)
+
+proto_library(
+    name = "place_proto",
+    srcs = ["place.proto"],
+    # import_prefix = "examples/proto",
+    visibility = ["//examples:__subpackages__"],
+    deps = [":thing_proto"],
+)
+
+zig_proto_library(
+    name = "place_zig_proto",
+    protos = [":place_proto"],
+    visibility = ["//examples:__subpackages__"],
+    deps = [":thing_zig_proto"],
+)
+
+proto_library(
+    name = "thing_proto",
+    srcs = ["thing.proto"],
+    # import_prefix = "examples/proto",
+    visibility = ["//examples:__subpackages__"],
+    deps = ["@protobuf//:any_proto"],
+)
+
+zig_proto_library(
+    name = "thing_zig_proto",
+    protos = [":thing_proto"],
+    visibility = ["//examples:__subpackages__"],
+)
